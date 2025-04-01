@@ -1,18 +1,22 @@
 import express from 'express';
+import { scrape } from './scraper';
 
 // Creating Express instance and setting the server port.
 const app = express();
-const PORT = 3000;
+const PORT = 3001;
 
 // Here I create my app endpoint that will handle the scraping request, at first I tested how to
 // access and manipulate the query parameter using query string and returning it in JSON.
-app.get('/api/scrape', (req, res) => {
+app.get('/api/scrape', async (req, res) => {
 
     // Used a try catch to help during debug, as well as preventing the application from breaking.
     try {
         const keyword = req.query.keyword;
 
-        res.json({keyword});
+        console.log("Received keyword:", req.query.keyword);
+        const products = await scrape(keyword);
+
+        res.json({products});
 
     } catch (error) {
         console.error('Error during scraping:', error);

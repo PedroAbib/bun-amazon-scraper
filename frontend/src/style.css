@@ -51,16 +51,21 @@ h1 {
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
-.logo.vanilla:hover {
-  filter: drop-shadow(0 0 2em #f7df1eaa);
+
+#results {
+  display: grid;
+  grid-template-columns: 430px 430px 430px;
 }
 
-.card {
-  padding: 2em;
+.product-card {
+  background-color: #1a1a1a;
+  border-radius: 8px;
+  padding: 1em;
+  margin: 1em;
 }
 
-.read-the-docs {
-  color: #888;
+#product-image {
+  border-radius: 8px;
 }
 
 button {
@@ -80,6 +85,31 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+#searchInput {
+  border-radius: 8px 0px 0px 8px;
+  font-size: 1em;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-family: inherit;
+  font-weight: 500;
+}
+
+#searchSubmit {
+  border-radius: 0px 8px 8px 0px;
+  font-size: 1em;
+  font-family: inherit;
+  font-weight: 500;
+  border: 0px;
+  padding: 0.6em 1.2em;
+  background-color: #646cff;
+  cursor: pointer;
+  transition: ease-in-out 0.25s;
+}
+#searchSubmit:hover {
+  background-color: #646cffaa;
+  filter: drop-shadow(0 0 1em #646cffaa);
 }
 
 @media (prefers-color-scheme: light) {

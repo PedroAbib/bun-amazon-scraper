@@ -1,9 +1,12 @@
 import express from 'express';
 import { scrape } from './scraper';
+import cors from 'cors';
 
 // Creating Express instance and setting the server port.
 const app = express();
 const PORT = 3001;
+
+app.use(cors());
 
 // Here I create my app endpoint that will handle the scraping request, at first I tested how to
 // access and manipulate the query parameter using query string and returning it in JSON.

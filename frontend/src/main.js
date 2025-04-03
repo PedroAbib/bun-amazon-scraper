@@ -48,16 +48,22 @@ document.addEventListener('DOMContentLoaded', () => {
       productCard.innerHTML = `
         <div id='product-image-container'>
           <img id='product-image' src='${product.imageUrl}' alt='${product.title}' />
-          </div>
-          
-          <div id='product-title-container'>
+        </div>
+        
+        <div id='product-title-container'>
           <h3>${product.title}</h3>
+        </div>
+        
+        <div id='product-details-container'>
+          <div id='product-price'>
+
           </div>
-          
-          <div id='product-details-container'>
-          <p>⭐ ${product.rating}</p>
-          <p>${product.reviews} reviews</p>
+
+          <div id='product-details'>
+            <p id='product-rating'>⭐ ${product.rating}</p>
+            <p id='product-reviews'>${product.reviews} reviews</p>
           </div>
+        </div>
       `;
       resultsContainer.appendChild(productCard);
     });
@@ -70,6 +76,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!keyword) {
       warning.innerHTML = 'Please enter a product!';
+
+      setTimeout(() => {
+        warning.innerHTML = '';
+      }, 3000);
+
       return;
     } else {
       resultsContainer.innerHTML = `<div class="loader"></div>`;
@@ -82,9 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
         const data = await response.json();
         const products = data.products;
-  
-        
-  
+
         renderProducts(products);
   
       } catch (error) {
@@ -96,12 +105,8 @@ document.addEventListener('DOMContentLoaded', () => {
   
         console.log('Mock data used:', products);
   
-        if (products.length === 0) {
-          resultsContainer.innerHTML = '<p>No products found.</p>';
-          return;
-        }
-  
-        renderProducts(products)      
+        renderProducts(products);
+
       } finally {
         loader.remove();
       }

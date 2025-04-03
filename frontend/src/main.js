@@ -5,14 +5,18 @@ import mock from './mock.json';
 
 document.querySelector('#app').innerHTML = `
   <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    
-    <a href="https://bun.sh/" target="_blank">
-      <img src="${bunLogo}" class="logo" alt="Bun logo" />
-    </a>
-
+    <div id='credit-container'>
+      <span id='credit'>Made with</span>
+      <a href="https://bun.sh/" target="_blank">
+        <img src="${bunLogo}" class="logo" alt="Bun logo" />
+      </a> 
+      <span id='credit'>and</span> 
+      <a href="https://vite.dev" target="_blank">
+        <img src="${viteLogo}" class="logo" alt="Vite logo" />
+      </a> 
+      <span id='credit'>by&nbsp;</span>
+      <a href='https://github.com/PedroAbib' target='_blank'>Pedro</a>
+    </div>
     <form id='searchForm'>
       <input type='text' id='searchInput' placeholder='Enter a product here...'>
       <input type='submit' id='searchSubmit' value='Search'>
@@ -43,6 +47,8 @@ document.addEventListener('DOMContentLoaded', () => {
     resultsContainer.innerHTML = "<p>Loading...</p>"
 
     try {
+      warning.innerHTML = '';
+
       const response = await fetch(`http://localhost:3001/api/scrape?keyword=${encodeURIComponent(keyword)}`);
       if (!response.ok) throw new Error('Failed to fetch products.');
 
@@ -70,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (error) {
       console.warn('Real fetch failed, using mock data:', error);
 
-      warning.innerHTML = 'Warning'
+      warning.innerHTML = '*Amazon connection failed, using mock data instead. Please, try again later.';
       
       const products = mock;
 
@@ -82,24 +88,18 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      if (Array.isArray(products) && products.length > 0) {
-        resultsContainer.innerHTML = '';
-        products.forEach(product => {
-          const productCard = document.createElement('div');
-          productCard.classList.add('product-card');
-          productCard.innerHTML = `
-            <img src='${product.imageUrl}' alt='${product.title}' id='product-image'/>
-            <h3>${product.title}</h3>
-            <p>⭐ ${product.rating}</p>
-            <p>${product.reviews} reviews</p>
-          `;
-          resultsContainer.appendChild(productCard);
-        });
-      } else {
-        resultsContainer.innerHTML = '<p>No products found.</p>';
-      }
-      
-      
+      resultsContainer.innerHTML = '';
+      products.forEach(product => {
+        const productCard = document.createElement('div');
+        productCard.classList.add('product-card');
+        productCard.innerHTML = `
+          <img src='${product.imageUrl}' alt='${product.title}' />
+          <h3>${product.title}</h3>
+          <p>⭐ ${product.rating}</p>
+          <p>${product.reviews} reviews</p>
+        `;
+        resultsContainer.appendChild(productCard);
+      });
       // resultsContainer.innerHTML = '<p>Error fetching products. Please try again later.</p>';
       // console.error('Error:', error);
     }

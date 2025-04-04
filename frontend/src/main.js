@@ -9,16 +9,16 @@ document.querySelector('#app').innerHTML = `
       <span id='credit'>Made with</span>
       <a class='logo-link' href="https://bun.sh/" target="_blank">
         <img src="${bunLogo}" class="logo" alt="Bun logo" />
-      </a> 
+      </a>
       <span id='credit'>and</span> 
       <a class='logo-link' href="https://vite.dev" target="_blank">
         <img src="${viteLogo}" class="logo" alt="Vite logo" />
-      </a> 
+      </a>
       <span id='credit'>by&nbsp;</span>
       <a href='https://github.com/PedroAbib' target='_blank'>Pedro</a>
     </div>
     <form id='searchForm'>
-      <input type='text' id='searchInput' placeholder='Enter a product here...'>
+      <input type='text' id='searchInput' placeholder='Search Amazon...'>
       <input type='submit' id='searchSubmit' value='Search'>
     </form>
 
@@ -46,24 +46,28 @@ document.addEventListener('DOMContentLoaded', () => {
       const productCard = document.createElement('div');
       productCard.classList.add('product-card');
       productCard.innerHTML = `
-        <div id='product-image-container'>
-          <img id='product-image' src='${product.imageUrl}' alt='${product.title}' />
-        </div>
-        
-        <div id='product-title-container'>
-          <h3>${product.title}</h3>
-        </div>
-        
-        <div id='product-details-container'>
-          <div id='product-price'>
-
+        <a href='${product.productUrl}' target='_blank'>
+          <div id='product-image-container'>
+            <img id='product-image' src='${product.imageUrl}' alt='${product.title}' />
           </div>
-
-          <div id='product-details'>
-            <p id='product-rating'>⭐ ${product.rating}</p>
-            <p id='product-reviews'>${product.reviews} reviews</p>
+          
+          <div id='product-title-container'>
+            <h3>${product.title}</h3>
           </div>
-        </div>
+          
+          <div id='product-details-container'>
+            <div id='product-price'>
+              <span id='price-symbol'>${product.priceSymbol}</span>
+              <span id='price-whole'>${product.priceWhole}</span>
+              <span id='price-fraction'>${product.priceFraction}</span>
+            </div>
+
+            <div id='product-details'>
+              <p id='product-rating'>⭐ ${product.rating}</p>
+              <p id='product-reviews'>${product.reviews} reviews</p>
+            </div>
+          </div>
+        </a>
       `;
       resultsContainer.appendChild(productCard);
     });

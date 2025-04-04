@@ -13,12 +13,12 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
+#credit-container a {
   font-weight: 500;
   color: #646cffaa;
   text-decoration: inherit;
 }
-a:hover {
+#credit-container a:hover {
   color: #646cff;
 }
 
@@ -32,6 +32,10 @@ body {
   display: flex;
   min-width: 320px;
   min-height: 100vh;
+}
+
+h3 {
+  padding: 0 0.5em;
 }
 
 #app {
@@ -85,6 +89,22 @@ body {
   100% { transform: rotate(360deg); }
 }
 
+#searchSubmit {
+  border-radius: 0px 8px 8px 0px;
+  font-size: 1em;
+  font-family: inherit;
+  font-weight: 500;
+  border: 0px;
+  padding: 0.6em 1.2em;
+  background-color: #646cffaa;
+  cursor: pointer;
+  transition: ease-in-out 0.25s;
+}
+#searchSubmit:hover {
+  background-color: #646cff;
+  filter: drop-shadow(0 0 1em #646cffaa);
+}
+
 #results {
   display: grid;
   grid-template-columns: 430px 430px 430px;
@@ -102,6 +122,11 @@ body {
   background-color: #3b3a3a;
 }
 
+.product-card a {
+  all: unset;
+  cursor: pointer;
+}
+
 #product-image-container {
   display: flex;
   justify-content: center;
@@ -110,10 +135,34 @@ body {
   width: 100%;
   height: 50%;
 }
+#product-title-container {
+  background-color: #494949;
+  height: auto;
+  min-height: 20%;
+  display: -webkit-box;
+  -webkit-line-clamp: 4; /* Limita a 4 linhas */
+  -webkit-box-orient: vertical;
+  overflow: hidden; /* Oculta o excesso */
+  text-overflow: ellipsis; 
+  border-radius: 6px;
+  padding: 0.3em;
+  margin: 1em 0;
+}
 #product-image {
   width: 50%;
   height: 100%;
   object-fit: contain;
+}
+#product-price {
+  margin-left: 0.5em;
+  font-weight: 800;
+  font-size: 3em;
+}
+#price-symbol {
+  font-size: 0.5em;
+}
+#price-fraction {
+  font-size: 0.5em;
 }
 #product-details-container {
   display: flex;
@@ -144,22 +193,6 @@ body {
   padding: 0.6em 1.2em;
   font-family: inherit;
   font-weight: 500;
-}
-
-#searchSubmit {
-  border-radius: 0px 8px 8px 0px;
-  font-size: 1em;
-  font-family: inherit;
-  font-weight: 500;
-  border: 0px;
-  padding: 0.6em 1.2em;
-  background-color: #646cffaa;
-  cursor: pointer;
-  transition: ease-in-out 0.25s;
-}
-#searchSubmit:hover {
-  background-color: #646cff;
-  filter: drop-shadow(0 0 1em #646cffaa);
 }
 
 ::-webkit-scrollbar {

@@ -6,7 +6,8 @@ import { JSDOM } from "jsdom";
  * 
  * @param {string} keyword - The searched product. 
  * @returns {Promise<Array>} An array of products related to the given keyword.
- * Each product is an object containing: title, rating, reviews and imageUrl.
+ * Each product is an object containing: title, priceSymbol, priceWhole, priceFraction,
+ * rating, reviews and imageUrl.
  */
 export async function scrape(keyword) {
 
@@ -50,10 +51,22 @@ export async function scrape(keyword) {
             // Storing title:
             const titleElement = item.querySelector('h2 a span') || item.querySelector('h2 span');
             const title = titleElement ? titleElement.textContent.trim() : 'N/A';
+
+            // Storing price symbol:
+            const priceSymbolElement = item.querySelector('.a-price-symbol');
+            const priceSymbol = priceSymbolElement ? priceSymbolElement.textContent.trim() : 'Unavailable';
+
+            // Storing price whole value:
+            const priceWholeElement = item.querySelector('.a-price-whole');
+            const priceWhole = priceWholeElement ? priceWholeElement.textContent.trim().replace(/\.$/, '') : '';
+
+            // Storing price fraction value:
+            const priceFractionElement = item.querySelector('.a-price-fraction');
+            const priceFraction = priceFractionElement ? priceFractionElement.textContent.trim() : '';
             
             // Storing rating:
             const ratingElement = item.querySelector('.a-icon-star-small .a-icon-alt');
-            const rating = ratingElement ? ratingElement.textContent.trim().split(' ')[0] : 'N/A';
+            const rating = ratingElement ? ratingElement.textContent.trim().split(' ')[0] : '';
 
             // Storing reviews:
             const reviewsElement = item.querySelector('.a-size-small .a-link-normal .a-size-base');
@@ -63,14 +76,22 @@ export async function scrape(keyword) {
             const imageElement = item.querySelector('img.s-image');
             const imageUrl = imageElement ? imageElement.getAttribute('src') : 'N/A';
 
+            // Storing product url:
+            const productUrlElement = item.querySelector('h2 a') || item.querySelector('a.a-link-normal');
+            const productUrl = productUrlElement ? `https://www.amazon.com${productUrlElement.getAttribute('href')}` : 'N/A';
+
             // In case the title is valid, I can build an object that represents the product, then I add it
             // to the products array.
             if (title !== 'N/A') {
                 products.push({
                     title,
+                    priceSymbol,
+                    priceWhole,
+                    priceFraction,
                     rating,
                     reviews,
-                    imageUrl
+                    imageUrl,
+                    productUrl
                 });     
             }
         } catch (error) {

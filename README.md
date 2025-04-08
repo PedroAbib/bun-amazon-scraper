@@ -1,6 +1,6 @@
 # 🛍️ Bun Amazon Scraper
 
-A fullstack web application that allows searching for products on Amazon and displaying the results in a clear, responsive, and styled manner. The backend is built with Bun, responsible for scraping the data, while the frontend uses Vite
+A fullstack web application that allows searching for products on Amazon and displaying the results in a clear, responsive, and styled manner. The backend is built with Bun, responsible for scraping the data, while the frontend uses Vite.
 
 ## ⚙️ Prerequisites
 
@@ -58,7 +58,7 @@ bun install
 ```
 3. Run backend:
 ```bash
-bun run start
+bun start
 ```
 
 ### Frontend (Vite)
@@ -77,14 +77,15 @@ bun run dev
 ```
 
 ## 🧪 How to Use
-1. Enter a product name in the search field.
-2. Click the "Search" button.
-3. The application will display:
+1. The frontend application will run at http://localhost:5173/
+2. Enter a product name in the search field
+3. Click the "Search" button
+4. The application will display:
     - A loader during loading
     - Cards with the found products containing:
         - Image
         - Title (limited to 4 lines)
-        - Formatted price
+        - Formatted price (if available)
         - Rating and number of reviews
 
 ## ⚠️ Note

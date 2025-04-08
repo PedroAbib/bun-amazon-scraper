@@ -21,8 +21,9 @@ document.querySelector('#app').innerHTML = `
       <input type='text' id='searchInput' placeholder='Search Amazon...'>
       <input type='submit' id='searchSubmit' value='Search'>
     </form>
+    
+    <span id='warning'></span>
 
-    <p id='warning'></p>
     <div id='results'></div>
   </div>
 `

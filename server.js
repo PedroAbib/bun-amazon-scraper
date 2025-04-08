@@ -9,7 +9,8 @@ const PORT = 3001;
 app.use(cors());
 
 // Here I create my app endpoint that will handle the scraping request, at first I tested how to
-// access and manipulate the query parameter using query string and returning it in JSON.
+// access and manipulate the query parameter using query string and returning it in JSON. Now it's set to return 
+// the scrape function result, a json response with listed products.
 app.get('/api/scrape', async (req, res) => {
 
     // Used a try catch to help during debug, as well as preventing the application from breaking.

@@ -7,7 +7,7 @@ import { JSDOM } from "jsdom";
  * @param {string} keyword - The searched product. 
  * @returns {Promise<Array>} An array of products related to the given keyword.
  * Each product is an object containing: title, priceSymbol, priceWhole, priceFraction,
- * rating, reviews and imageUrl.
+ * rating, reviews, imageUrl and productUrl.
  */
 export async function scrape(keyword) {
 

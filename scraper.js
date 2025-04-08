@@ -66,7 +66,7 @@ export async function scrape(keyword) {
             
             // Storing rating:
             const ratingElement = item.querySelector('.a-icon-star-small .a-icon-alt');
-            const rating = ratingElement ? ratingElement.textContent.trim().split(' ')[0] : '';
+            const rating = ratingElement ? ratingElement.textContent.trim().split(' ')[0] : 'N/A';
 
             // Storing reviews:
             const reviewsElement = item.querySelector('.a-size-small .a-link-normal .a-size-base');

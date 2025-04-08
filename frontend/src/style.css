@@ -13,15 +13,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-#credit-container a {
-  font-weight: 500;
-  color: #646cffaa;
-  text-decoration: inherit;
-}
-#credit-container a:hover {
-  color: #646cff;
-}
-
 .logo-link {
   height: 0;
   margin-bottom: 10em;
@@ -36,6 +27,7 @@ body {
 
 h3 {
   padding: 0 0.5em;
+  margin: 0;
 }
 
 #app {
@@ -46,19 +38,27 @@ h3 {
 }
 
 #credit-container {
+  height: 8em;
   display: flex;
   justify-content: center;
   place-items: center;
 }
-
 #credit {
   font: inherit;
-  font-weight: 500;
+  font-weight: 800;
+}
+#credit-container a {
+  font-weight: 800;
+  color: #646cffaa;
+  text-decoration: inherit;
+}
+#credit-container a:hover {
+  color: #646cff;
 }
 
 .logo {
   height: 6em;
-  margin: 2em;
+  margin: 1em;
   will-change: filter;
   transition: filter 300ms;
 }
@@ -69,6 +69,8 @@ h3 {
 #warning {
   color: #FFC51D;
   font-weight: 500;
+  background-color: #333;
+  border-radius: 8px;
 }
 
 .loader {
@@ -83,7 +85,6 @@ h3 {
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
-
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
@@ -91,6 +92,7 @@ h3 {
 
 #searchSubmit {
   border-radius: 0px 8px 8px 0px;
+  margin-bottom: 1em;
   font-size: 1em;
   font-family: inherit;
   font-weight: 500;
@@ -107,7 +109,9 @@ h3 {
 
 #results {
   display: grid;
-  grid-template-columns: 430px 430px 430px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1em;
+  justify-content: center;
 }
 
 .product-card {
@@ -115,9 +119,9 @@ h3 {
   border-radius: 20px;
   height: 35em;
   padding: 1em;
-  margin: 1em;
-  width: 23em;
+  width: 90%;
 }
+
 .product-card:hover {
   background-color: #3b3a3a;
 }
@@ -137,13 +141,12 @@ h3 {
 }
 #product-title-container {
   background-color: #494949;
-  height: auto;
-  min-height: 20%;
+  height: 20%;
   display: -webkit-box;
-  -webkit-line-clamp: 4; /* Limita a 4 linhas */
+  -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
-  overflow: hidden; /* Oculta o excesso */
-  text-overflow: ellipsis; 
+  overflow: hidden;
+  text-overflow: ellipsis;
   border-radius: 6px;
   padding: 0.3em;
   margin: 1em 0;
@@ -178,7 +181,6 @@ h3 {
   font-weight: 800;
   background-color: #2f4554;
   border-radius: 10px;
-
   padding: 1em 1em 1em 0.5em;
 }
 #product-reviews {
@@ -197,14 +199,14 @@ h3 {
 
 ::-webkit-scrollbar {
   width: 3px;
-  opacity: 0.5; /* Torna a scrollbar mais discreta */
+  opacity: 0.5;
 }
 ::-webkit-scrollbar-thumb {
   background: #888;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
-  opacity: 1; /* Tornar a scrollbar totalmente visível quando o usuário passar o mouse */
+  opacity: 1;
 }
 
 

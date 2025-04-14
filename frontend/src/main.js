@@ -74,6 +74,29 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
+  const renderSkeletons = () => {
+    resultsContainer.innerHTML = '';
+
+    const cardMinWidth = 280;
+    const containerWidth = window.innerWidth;
+    const totalSkeletons = Math.min(Math.floor(containerWidth / cardMinWidth), 4);
+
+    for (let i = 0; i < totalSkeletons; i++) {
+      const skeletonCard = document.createElement('div');
+      skeletonCard.classList.add('skeleton-card');
+
+      skeletonCard.innerHTML = `
+        <div class='skeleton-image'></div>
+        <div class='skeleton-title'></div>
+        <div class='skeleton-details-container'>
+          <div class='skeleton-rating'></div>
+        </div>
+      `;
+
+      resultsContainer.appendChild(skeletonCard);
+    }
+  };
+
   searchForm.addEventListener('submit', async (event) => {
     event.preventDefault();
     
@@ -88,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       return;
     } else {
-      resultsContainer.innerHTML = `<div class="loader"></div>`;
+      renderSkeletons();
 
       try {
         warning.innerHTML = '';

@@ -119,8 +119,6 @@ h3 {
   animation: skeleton-loading 1.2s infinite ease-in-out;
 }
 .skeleton-image {
-  display: flex;
-  justify-content: center;
   background-color: #2a2a2a;
   border-radius: 20px;
   width: 100%;
@@ -129,13 +127,7 @@ h3 {
 .skeleton-title {
   background-color: #2a2a2a;
   height: 20%;
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
   border-radius: 6px;
-  padding: 0.3em;
   margin: 1em 0;
 }
 .skeleton-details-container {
@@ -147,7 +139,6 @@ h3 {
 .skeleton-rating {
   margin: 0;
   width: 22%;
-  font-weight: 800;
   background-color: #2a2a2a;
   border-radius: 10px;
   padding: 1em 1em 1em 0.5em;

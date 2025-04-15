@@ -1,6 +1,6 @@
 # 🛍️ Bun Amazon Scraper
 
-A fullstack web application that allows searching for products on Amazon and displaying the results in a clear, responsive, and styled manner. The backend is built with Bun, responsible for scraping the data, while the frontend uses Vite.
+A fullstack web application that allows searching for products on Amazon and displaying the results in a clear, responsive, and styled manner. The backend is built with Express.js using Bun as runtime, responsible for scraping the data, while the frontend uses Vite.
 
 ## ⚙️ Prerequisites
 
@@ -21,7 +21,7 @@ powershell -c "irm bun.sh/install.ps1 | iex"
 ## ⚙️ Technologies
 
 - **Frontend:** Vite, HTML, CSS and JavaScript
-- **Backend:** Bun, Express.js, Axios and JSDOM
+- **Backend:** Express.js using Bun as runtime, Axios and JSDOM
 - **Styling:** Pure CSS with responsiveness
 
 ## Project's Structure
@@ -46,7 +46,7 @@ bun-amazon-scraper/
 
 ## 🚀 How to Install and Run
 
-### Backend (Bun)
+### Backend (Express.js)
 
 1. Navigate to backend folder:
 ```bash
